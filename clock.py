@@ -7,21 +7,22 @@ from rich.panel import Panel
 
 # Function to initialize time
 def initial_time(second=0, minute=0, hour=0):
-    print('Do you want to adjust your clock?\n[y]es or [n]o?')
+    print('Would you like to adjust your clock?\n[y]es or [n]o?')
     
     user_answer = input('> ').strip().lower()
 
-    if user_answer == 'y':
+    if user_answer == 'y' or user_answer == 'yes':
         try:
-            hour = int(input('hour: '))
-            minute = int(input('minute: '))
-            second = int(input('second: '))
+            hour = int(input('Hour: '))
+            minute = int(input('Minute: '))
+            second = int(input('Second: '))
             return second, minute, hour
 
         except ValueError:
-            print('Please enter valid numbers for hour, minutes, and seconds.')
+            print('Please enter valid numbers for hours, minutes, and seconds.')
     return second, minute, hour
 
+# Function to verify and adjust time overflow
 def time_verification(second, minute, hour):
     if second > 59:
         minute += 1
